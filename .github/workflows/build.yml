@@ -56,11 +56,18 @@ jobs:
       - name: Run unit tests
         run: sh ${{ github.workspace }}/scripts/4_run_tests.sh
 
+      - name: finding html assets
+        run: |
+          pwd
+          ls
+
       - name: Archive test results
         uses: actions/upload-artifact@v2
         with:
           name: test_results
-          path: test_result.txt
+          path: test_result.txt 
+      
+   
      # - name: SonarCloud Scan
      #   uses: SonarSource/sonarcloud-github-action@master
      #   env:
