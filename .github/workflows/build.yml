@@ -56,20 +56,23 @@ jobs:
       - name: Run unit tests
         run: sh ${{ github.workspace }}/scripts/4_run_tests.sh
 
-      - name: Copy Dependencies
+      - name: Copy dependencies
         run: |
           mkdir -p report_assets
           cp coverage_reports.html report_assets/
           cp -a /home/runner/work/cox-utpsql-poc/cox-utpsql-poc/coverage_reports.html_assets/. report_assets/.
-          echo "in report_assets"
-          cd report_assets
-          ls
+        #  echo "in report_assets"
+        #  cd report_assets
+        #  ls
+          
+      - name: Package Artifact
+        run: zip -r coverage_report.zip report_assets/
 
-      - name: Archive test results
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: test_results
-          path: test_result.txt 
+          name: coverage-report
+          path: coverage-report.zip 
       
    
      # - name: SonarCloud Scan
