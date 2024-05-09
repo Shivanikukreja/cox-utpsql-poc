@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        utplsql-version: [develop, v3.1.13]
+        utplsql-version: [v3.1.13]
 
     services:
       oracle:
@@ -67,14 +67,13 @@ jobs:
           
       - name: Package Artifact
         run: |
-         pwd
          zip -r coverage_report.zip report_assets/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: coverage-report
-          path: coverage-report.zip 
+          name: coverage_report
+          path: coverage_report.zip 
       
    
      # - name: SonarCloud Scan
