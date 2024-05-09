@@ -56,13 +56,14 @@ jobs:
       - name: Run unit tests
         run: sh ${{ github.workspace }}/scripts/4_run_tests.sh
 
-      - name: finding html assets
+      - name: Copy Dependencies
         run: |
-          pwd
+          mkdir -p report_assets
+          cp coverage_reports.html report_assets/
+          cp -a /home/runner/work/cox-utpsql-poc/cox-utpsql-poc/coverage_reports.html_assets/. report_assets/.
+          echo "in report_assets"
+          cd report_assets
           ls
-          cd /home/runner/work/cox-utpsql-poc/cox-utpsql-poc/coverage_reports.html_assets
-          ls
-          
 
       - name: Archive test results
         uses: actions/upload-artifact@v2
