@@ -54,7 +54,14 @@ jobs:
         run: sh ${{ github.workspace }}/scripts/3_install_tests.sh
 
       - name: Run unit tests
-        run: sh ${{ github.workspace }}/scripts/4_run_tests.sh
+        run: |
+          sh ${{ github.workspace }}/scripts/4_run_tests.sh
+          if grep -q "Test failures: 0" test_result.txt; then
+            echo "All tests passed"
+          else
+            echo "Some tests failed"
+            exit 1
+          fi
 
       - name: Copy dependencies
         run: |
