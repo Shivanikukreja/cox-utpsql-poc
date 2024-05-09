@@ -60,6 +60,9 @@ jobs:
         run: |
           pwd
           ls
+          cd /home/runner/work/cox-utpsql-poc/cox-utpsql-poc/coverage_reports.html_assets
+          ls
+          
 
       - name: Archive test results
         uses: actions/upload-artifact@v2
