@@ -76,11 +76,11 @@ jobs:
         run: |
          zip -r coverage_report.zip report_assets/
 
-   #   - name: Upload artifact
-   #     uses: actions/upload-artifact@v2
-   #     with:
-   #       name: coverage_report
-   #       path: coverage_report.zip 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: coverage_report
+          path: coverage_report.zip 
       
    
      # - name: SonarCloud Scan
